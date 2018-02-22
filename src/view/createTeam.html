@@ -1,0 +1,24 @@
+<div class="jumbotron">
+    <h2>Criar novo time</h2>
+    <form name="teamForm">
+        <input class="form-control" name="teamName" type="text" ng-model="team.teamName" placeholder="Nome do time" ng-required="true"
+            ng-minlength="5">
+        <select class="form-control" name="pokemon" ng-model="result.name" ng-options="result.name for result in results"
+            ng-required="true">
+            <option value="">Selecione um pokemon</option>
+        </select>
+    </form>
+    <div ng-show="teamForm.teamName.$dirty" ng-messages="teamForm.teamName.$error">
+        <div ng-message="required" class="alert alert-danger">
+            Por favor, preencha o campo nome!
+        </div>
+        <div ng-message="minlength" class="alert alert-danger">
+            O campo nome deve ter no mínimo 5 caracteres.
+        </div>
+    </div>
+    <div ng-show="teamForm.pokemon.$invalid && teamForm.pokemon.$dirty" class="alert alert-danger">
+        Por favor, selecione o pokemon na lista!
+    </div>
+
+    <button class="btn btn-primary btn-block" ng-click="addTeam(team)" ng-disabled="teamForm.$invalid">Incluir time</button>
+</div>

@@ -1,0 +1,21 @@
+<div class="jumbotron">
+    <h3> {{app}} </h3>
+    {{ teams }}
+    <input class="form-control" type="text" ng-model="search" placeholder="Pesquisar...">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Pokemon</th>
+        </tr>
+        <tr ng-repeat="team in teams | filter:search ">
+            <td>
+                <input type="checkbox" ng-model="team.select" />
+            </td>
+            <td>{{team.teamName | uppercase}}</td>
+            <td>{{team.name}}</td>
+        </tr>
+    </table>
+    <a class="btn btn-primary btn-block" href="#!/createTeam">Criar novo time</a>
+    <button class="btn btn-danger btn-block" ng-click="deleteTeam(teams)" ng-if="teams.length > 0" ng-disabled="!isTeamSelect(teams)">Excluir time</button>
+</div>
